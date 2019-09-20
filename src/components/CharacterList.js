@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import characterApiResponse from '../data/characterApiRepsonse';
+
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
 
@@ -10,7 +12,19 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
+      {
+        characterApiResponse.results.map(character => {
+          return (
+            <div key={character.id} >
+              <h3>{character.name}</h3>
+              <p>Species: {character.species}</p>
+              <p>Gender: {character.gender}</p>
+              <p>Status: {character.status === 'unknown' ? 'Unknown' : character.status}</p>
+              <p>Type: {character.type ? character.type : 'Not defined'}</p>
+            </div>
+          )
+        })
+      }
     </section>
   );
 }
