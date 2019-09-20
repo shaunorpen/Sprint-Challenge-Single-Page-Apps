@@ -24,7 +24,9 @@ export default function SearchForm({  searchTerm , setSearchTerm, setApiUrl }) {
       <input type='text' 
             onChange={e => {
               setSearchTerm(e.target.value);
-              const searchUrl = 'https://rickandmortyapi.com/api/character/?name=' + searchTerm.toLowerCase();
+              const searchUrl = 
+                'https://rickandmortyapi.com/api/character/?name=' 
+                + searchTerm.toLowerCase();
               setApiUrl(searchUrl);
             }}
             value={searchTerm} />
