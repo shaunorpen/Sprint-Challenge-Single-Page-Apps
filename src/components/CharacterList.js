@@ -4,18 +4,22 @@ import axios from 'axios';
 import CharacterCard from './CharacterCard';
 
 export default function CharacterList() {
-  const rickAndMortyApi = 'https://rickandmortyapi.com/api/character/';
+  const [apiUrl, setApiUrl] = useState('https://rickandmortyapi.com/api/character/?page=1');
   const [characters, setCharacters] = useState([]);
+  const [back, setBack] = useState();
+  const [forward, setForward] = useState();
 
   useEffect(() => {
-    axios.get(rickAndMortyApi)
+    axios.get(apiUrl)
       .then(res => {
         setCharacters(res.data.results);
+        setBack(res.data.info.prev);
+        setForward(res.data.info.next);
       })
       .catch(err => {
         console.log(err.message);
       });
-  }, [characters]);
+  }, [apiUrl]);
 
   const CharacterList = styled.section`
     display: flex;
@@ -40,8 +44,8 @@ export default function CharacterList() {
       }
       
       button:hover {
-      background: lightgreen;
-    }
+        background: lightgreen;
+      }
     }
   `;
 
@@ -53,8 +57,8 @@ export default function CharacterList() {
         })
       }
       <div className='nav'>
-        <button>Back</button>
-        <button>Next</button>
+        <button onClick={() => setApiUrl(back)} >Back</button>
+        <button onClick={() => setApiUrl(forward)} >Next</button>
       </div>
     </CharacterList>
   );
