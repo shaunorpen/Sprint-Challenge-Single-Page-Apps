@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-import axios from 'axios';
 import CharacterCard from './CharacterCard';
 
 export default function CharacterList({characters, back, forward, setApiUrl}) {
