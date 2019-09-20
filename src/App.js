@@ -12,6 +12,7 @@ export default function App() {
   const [characters, setCharacters] = useState([]);
   const [back, setBack] = useState();
   const [forward, setForward] = useState();
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     axios.get(apiUrl)
@@ -29,11 +30,18 @@ export default function App() {
     <main>
       <Header />
       <Route path='/' exact render={props => <WelcomePage/>}/>
+      <Route path='/characters' render={props => <SearchForm 
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setApiUrl={setApiUrl}
+      />} />
       <Route path='/characters' render={props => <CharacterList 
         characters={characters}
         back={back}
         forward={forward}
         setApiUrl={setApiUrl}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
       />}/>
     </main>
   );
