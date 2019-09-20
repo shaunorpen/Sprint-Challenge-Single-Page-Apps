@@ -2,8 +2,6 @@ import React from "react";
 
 export default function SearchForm() {
   return (
-    <div>
-      <input type='text' />
-    </div>
+    <input type='text' />
   );
 }
