@@ -36,6 +36,7 @@ export default function Header() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='/characters'>Characters</Link>
+        <Link to='/search'>Search</Link>
       </nav>
     </SiteHeader>
   );
