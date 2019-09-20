@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import styled from 'styled-components';
 
 const Search = styled.div`
@@ -45,34 +44,56 @@ const Search = styled.div`
         border: none;
         text-align: center;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
-      }
+  }
+
+  form .errors {
+    margin-bottom: 40px;
+    color: red;
+  }
 `;
+
+const initialValues = {
+  name: '', 
+  species: '', 
+  gender: '',
+};
+
+const validate = (values) => {
+  const errors = {};
+  if (!(values.name && values.species && values.gender)) {
+    errors.name = 'Please complete at least one field';
+  }
+  return errors;
+}
 
 export default function SearchForm() {
   return (
     <Search>
       <h2>Search</h2>
       <Formik
-        initialValues={{name: ''}}
+        initialValues={initialValues}
         onSubmit={(values, actions) => null}
+        validate={validate}
       >
         <Form>
           <div>
             <label htmlFor='name'>Name: </label>
             <Field type='text' name='name' />
-            <ErrorMessage name='name' component='span' />
           </div>
           <div>
             <label htmlFor='species'>Species: </label>
             <Field type='text' name='species' />
-            <ErrorMessage name='species' component='span' />
           </div>
           <div>
             <label htmlFor='gender'>Gender: </label>
             <Field type='text' name='gender' />
-            <ErrorMessage name='gender' component='span' />
           </div>
           <button type='submit' disabled={() => null}>Submit</button>
+          <div className='errors'>
+            <ErrorMessage name='name' component='span' />
+            <ErrorMessage name='species' component='span' />
+            <ErrorMessage name='gender' component='span' />
+          </div>
         </Form>
       </Formik>
     </Search>
