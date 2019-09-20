@@ -6,9 +6,8 @@ const Character = styled.div`
   padding: 1rem;
   margin: 0.4rem 0.4rem;
   flex-basis: 10rem;
-  flex-shrink: 1;
-  flex-grow: 1;
   color: #472523;
+  width: 160px;
 
   h3 {
     font-size: 1rem;
