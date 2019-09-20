@@ -35,7 +35,6 @@ export default function App() {
         forward={forward}
         setApiUrl={setApiUrl}
       />}/>
-      <Route path='/search' render={props => <SearchForm />}/>
     </main>
   );
 }
