@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: Client side allows a single page to behave as if it were an entire website with different URL's pointing to different resources with history populated correctly so the back and forward buttons work as the user would expect all with a single network request. Once the page has loaded for the first time no further network requests are made unless the currently displayed component requires data from an API to render or work correctly.
 
 ## Project Set Up
 
