@@ -45,10 +45,17 @@ export default function CharacterList() {
       button {
         display: block;
         padding: 10px 30px;
+        width: 100px;
         margin: 0px 10px;
         border-radius: 10px;
         font-size: 1rem;
+        border: none;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
       }
+      
+      button:hover {
+      background: lightgreen;
+    }
     }
   `;
 
