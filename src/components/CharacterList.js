@@ -3,23 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
 
-export default function CharacterList() {
-  const [apiUrl, setApiUrl] = useState('https://rickandmortyapi.com/api/character/?page=1');
-  const [characters, setCharacters] = useState([]);
-  const [back, setBack] = useState();
-  const [forward, setForward] = useState();
-
-  useEffect(() => {
-    axios.get(apiUrl)
-      .then(res => {
-        setCharacters(res.data.results);
-        setBack(res.data.info.prev);
-        setForward(res.data.info.next);
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
-  }, [apiUrl]);
+export default function CharacterList({characters, back, forward, setApiUrl}) {
 
   const CharacterList = styled.section`
     display: flex;
