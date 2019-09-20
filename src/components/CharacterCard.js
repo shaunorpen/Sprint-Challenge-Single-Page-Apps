@@ -31,7 +31,7 @@ export default function CharacterCard(props) {
       <Character key={id}>
         <h3>{name}</h3>
         <div>
-          <img src={image}/>
+          <img src={image} alt={name}/>
         </div>
         <p>Species: {species}</p>
         <p>Gender: {gender}</p>

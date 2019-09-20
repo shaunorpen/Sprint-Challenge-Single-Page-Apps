@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import axios from 'axios';
 import CharacterCard from './CharacterCard';
 
-import characterApiResponse from '../data/characterApiRepsonse';
-
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+  const rickAndMortyApi = 'https://rickandmortyapi.com/api/character/';
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+    axios.get(rickAndMortyApi)
+      .then(res => {
+        setCharacters(res.data.results);
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  }, [characters]);
 
   const CharacterList = styled.section`
     display: flex;
@@ -43,7 +48,7 @@ export default function CharacterList() {
   return (
     <CharacterList>
       {
-        characterApiResponse.results.map(character => {
+        characters.map(character => {
           return <CharacterCard props={character} />
         })
       }
