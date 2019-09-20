@@ -16,7 +16,7 @@ export default function CharacterList() {
     flex-wrap: wrap;
     justify-content: space-between;
 
-    div {
+    .character {
       box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
       padding: 1rem;
       margin: 0.4rem 0.4rem;
@@ -35,6 +35,21 @@ export default function CharacterList() {
         margin-bottom: 0;
       }
     }
+
+    .nav {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+
+      button {
+        display: block;
+        padding: 10px 30px;
+        margin: 0px 10px;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+    }
   `;
 
   return (
@@ -43,7 +58,7 @@ export default function CharacterList() {
         characterApiResponse.results.map(character => {
           const {id, name, species, gender, status, type} = character;
           return (
-            <div key={id} >
+            <div key={id} className='character'>
               <h3>{name}</h3>
               <p>Species: {species}</p>
               <p>Gender: {gender}</p>
@@ -53,6 +68,10 @@ export default function CharacterList() {
           )
         })
       }
+      <div className='nav'>
+        <button>Back</button>
+        <button>Next</button>
+      </div>
     </CharacterList>
   );
 }
